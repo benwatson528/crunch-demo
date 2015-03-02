@@ -16,11 +16,15 @@ import org.apache.hadoop.util.ToolRunner;
  * A word count example for Apache Crunch, based on Crunch's example projects.
  */
 public class WordCount extends Configured implements Tool {
-
 	public static void main(String[] args) throws Exception {
 		Main(args, new Configuration());
 	}
 
+	/**
+	 * Having main() call this method means that we're able to call Main() in
+	 * our unit tests directly and effectively have the unit test run the job
+	 * from the beginning.
+	 */
 	public static int Main(String[] args, Configuration conf) throws Exception {
 		return ToolRunner.run(conf, new WordCount(), args);
 	}
